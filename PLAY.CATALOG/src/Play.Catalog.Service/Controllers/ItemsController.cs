@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Play.Catalog.Sercie.Dtos;
+using Play.Catalog.Service.Dtos;
+using Play.Catalog.Service.Repositories;
 
 namespace Play.Catalog.Controllers
 {
@@ -12,6 +13,7 @@ namespace Play.Catalog.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase
     {
+        private readonly ItemsRepository itemsRepository = new();
         private static readonly List<ItemDto> items = new()
         {
             new ItemDto(Guid.NewGuid(), "Potion", "Restores a small abount of HP", 5, DateTimeOffset.UtcNow),
@@ -64,7 +66,7 @@ namespace Play.Catalog.Controllers
 
                 items.Add(item);
 
-                return CreatedAtAction(nameof(GetById), new {id = item.Id}, item);
+                return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
             }
 
             var updatedItem = existingItem with
