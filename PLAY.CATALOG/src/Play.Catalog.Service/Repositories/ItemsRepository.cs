@@ -31,7 +31,7 @@ public class ItemsRepository
         return await dbCollection.Find(filter).FirstOrDefaultAsync();
     }
 
-    public async Task CraeateAsync(Item entity)
+    public async Task CreateAsync(Item entity)
     {
         if (entity == null)
         {
