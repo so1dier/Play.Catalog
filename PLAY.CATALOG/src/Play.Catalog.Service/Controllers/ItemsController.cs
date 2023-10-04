@@ -17,12 +17,6 @@ namespace Play.Catalog.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly ItemsRepository itemsRepository = new();
-        //private static readonly List<ItemDto> items = new()
-        //{
-        //    new ItemDto(Guid.NewGuid(), "Potion", "Restores a small abount of HP", 5, DateTimeOffset.UtcNow),
-        //    new ItemDto(Guid.NewGuid(), "Antidote", "Cures poison", 5, DateTimeOffset.UtcNow),
-        //    new ItemDto(Guid.NewGuid(), "Bronze sword", "Deals a small abount of damage", 20, DateTimeOffset.UtcNow)
-        //};
 
         [HttpGet]
         public async Task<IEnumerable<ItemDto>> GetAsync()
