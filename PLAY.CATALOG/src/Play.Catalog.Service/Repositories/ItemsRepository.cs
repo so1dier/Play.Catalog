@@ -15,7 +15,7 @@ public class ItemsRepository
 
     public ItemsRepository()
     {
-        var mongoClient = new MongoClient("mondodb://localhost:27017");
+        var mongoClient = new MongoClient("mongodb://localhost:27017");
         var datavase = mongoClient.GetDatabase("Catalog");
         dbCollection = datavase.GetCollection<Item>(collectionName);
     }
