@@ -28,18 +28,6 @@ namespace Play.Catalog.Service
         public void ConfigureServices(IServiceCollection services)
         {
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-
-            serviceSettings = Configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
-
-            //Constructing and registering a mongoDB
-            services.AddSingleton(serviceProvider =>
-            {
-                var mongoDbSettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-                var mongoClient = new MongoClient(mongoDbSettings.ConnectionString);
-                return mongoClient.GetDatabase(serviceSettings.ServiceName);
-            });
 
             services.AddSingleton<IRepository<Item>>(serviceProvider =>
             {
