@@ -2,3 +2,13 @@
 ```bash
 docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db mongo
 ```
+
+## How to run the main project
+'''bash
+dotnet run
+'''
+
+## How to debug
+'''bash
+dotnet debug
+'''
